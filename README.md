@@ -1,4 +1,4 @@
-# IoT Desk Monitoring
+# IoT Prolonged Sitting Monitoring
 
 A simple IoT project to monitor user's prolonged sitting at a desk.
 
