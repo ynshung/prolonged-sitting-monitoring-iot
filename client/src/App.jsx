@@ -18,7 +18,11 @@ function App() {
 
   useEffect(() => {
     // Read from local storage
-    socketRef.current = io(import.meta.env.VITE_API_URL);
+    socketRef.current = io(import.meta.env.VITE_API_URL, {
+      transports: ["websocket"],
+      secure: true,
+      rejectUnauthorized: false,
+    });
     socketRef.current.connect();
     socketRef.current.emit("status");
     socketRef.current.emit("getCalibrateStatus");
