@@ -1,12 +1,16 @@
-import express from "express";
 import mqtt from "mqtt";
-import http from "http";
-import cors from "cors";
+import https from "https";
+import fs from "fs";
 import { Server } from "socket.io";
 import { MongoClient } from "mongodb";
 import "dotenv/config";
 
 // Constants
+const sslOptions = {
+  key: fs.readFileSync('./certs/private.key'),
+  cert: fs.readFileSync('./certs/certificate.pem'),
+};
+
 const ALERT_TIME  = 30 * 60 * 1000; // 20 minutes
 const SNOOZE_TIME =  5 * 60 * 1000; // 5 minutes
 const CALIBRATION_TIME = 5 * 1000;
@@ -20,15 +24,12 @@ if (HISTORY_SIZE < HISTORY_THRESHOLD) {
   );
 }
 
-// HTTP
-const app = express();
-app.use(cors());
-
 // WS
-let server = http.createServer(app);
+const server = https.createServer(sslOptions);
+
 var io = new Server(server, {
   cors: {
-    origin: "*",
+    origin: "https://psm.ynshung.com",
     methods: ["GET", "POST"],
   },
 });
@@ -230,19 +231,6 @@ client.on("message", (topic, message) => {
   }
 });
 
-// Express
-
-app.get("/status", (req, res) => {
-  res.json({
-    deviceConnected,
-    lastDeviceHeartbeat,
-  });
-});
-
-app.listen(3000, () => {
-  console.log("Server running on port 3000");
-});
-
 // WS
 
 io.on("connection", (socket) => {
@@ -290,6 +278,6 @@ io.on("connection", (socket) => {
   });
 });
 
-io.listen(3001, () => {
-  console.log("Socket.io running on port 3001");
+server.listen(443, () => {
+  console.log("Socket.io running on port 443");
 });

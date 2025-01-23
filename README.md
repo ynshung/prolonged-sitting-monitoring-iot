@@ -21,7 +21,9 @@ The project consists of a web application that displays the user's sitting time 
 
 ## Setup
 
-* Server: `.env` with the following variables: `MQTT_HOST`, `MQTT_USERNAME`, `MQTT_PASSWORD`, `DB_URL`.
+* Server
+  * `.env` with the following variables: `MQTT_HOST`, `MQTT_USERNAME`, `MQTT_PASSWORD`, `DB_URL`.
+  * Certificates for HTTPS in the `certs` folder.
 * Client: `.env` with the following variables: `VITE_API_URL`.
 * Hardware: `secrets.h` with the following variables: `WIFI_SSID`, `WIFI_PASSWORD`, `MQTT_HOST`, `MQTT_PORT`, `MQTT_USERNAME`, `MQTT_PASSWORD`.
 
