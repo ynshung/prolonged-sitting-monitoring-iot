@@ -41,8 +41,6 @@ void callback(char* topic, byte* payload, unsigned int length) {
     payload[length] = '\0';
     stopwatchTime = atol((char*)payload);
     lastTimeSync = millis();
-    Serial.println((char*)payload);
-    Serial.println(stopwatchTime);
   }
 }
 

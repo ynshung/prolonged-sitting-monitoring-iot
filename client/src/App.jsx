@@ -187,8 +187,8 @@ function App() {
         </p>
         <p
           className={`font-bold text-8xl ${
-            deviceAlert ? "dark:text-red-600 animate-pulse" : ""
-          }`}
+            !deviceConnected && "animate-pulse"
+          } ${deviceAlert && "dark:text-red-600 animate-pulse"}`}
         >
           {formatTime(elapsedTime)}
         </p>

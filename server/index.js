@@ -159,8 +159,6 @@ const changeSittingPhase = (sitting) => {
   io.emit("sittingStatus", sitting);
   io.emit("lastSitChangeTime", lastSitChangeTime);
   syncDeviceTime();
-
-  client.publish("syncTime", );
 };
 
 const syncDeviceTime = () => {
@@ -204,6 +202,7 @@ client.on("message", (topic, message) => {
       deviceConnected = true;
       io.emit("deviceStatus", true);
       client.publish("lastSitChangeTime", lastSitChangeTime.toString());
+      syncDeviceTime();
     }
 
     const distance = parseFloat(message.toString());
