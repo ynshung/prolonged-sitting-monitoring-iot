@@ -21,9 +21,15 @@ The project consists of a web application that displays the user's sitting time 
 
 ## Setup
 
+### Environment Variables
+
 * Server
   * `.env` with the following variables: `MQTT_HOST`, `MQTT_USERNAME`, `MQTT_PASSWORD`, `DB_URL`.
   * Certificates for HTTPS in the `certs` folder.
 * Client: `.env` with the following variables: `VITE_API_URL`.
 * Hardware: `secrets.h` with the following variables: `WIFI_SSID`, `WIFI_PASSWORD`, `MQTT_HOST`, `MQTT_PORT`, `MQTT_USERNAME`, `MQTT_PASSWORD`.
+
+### Development
+* Configure the pin, add or remove components if necessary, compile and upload the hardware code to the IoT board.
+* `npm i` and `npm run dev` in the `server` and `client` folders.
 
