@@ -14,15 +14,18 @@ The project consists of a web application that displays the user's sitting time 
 - Other components that can be used (e.g. LEDs, buttons)
 
 ### UI & Software
-- Mosquitto MQTT Broker
-- Express.js Server
-- MongoDB Database
-- React.js Frontend
+- Mosquitto MQTT Broker: Communication between IoT board and server
+- MongoDB Database: Storage of sitting history database
+- Socket.IO Server: WebSockets communication with client web app
+- React.js Frontend: Front-end web app
 
 ## Setup
 
-### Environment Variables
+### Prerequisites
+* Install `TM1637` (Avishay), `PubSubClient` (Nick), `floatToString` (Ted) and `EspMQTTClient` (Patrick) on Arduino IDE before compiling.
+* Server must have MQTT broker, MongoDB database and Node.js installed
 
+### Environment Variables
 * Server
   * `.env` with the following variables: `MQTT_HOST`, `MQTT_USERNAME`, `MQTT_PASSWORD`, `DB_URL`.
   * Certificates for HTTPS in the `certs` folder.
